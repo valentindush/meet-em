@@ -33,7 +33,7 @@ const TopBar = () => {
 
 
     return (
-        <div className='bg-black flex items-center gap-3 justify-between'>
+        <div className='bg-black flex items-center gap-3 justify-between p-4 px-8'>
             <div className="flex items-center gap-12">
                 <div className="logo ">
                     {/* Logo */}
@@ -42,7 +42,7 @@ const TopBar = () => {
 
                 </div>
                 <div className="title">
-                    <p className='text-white text-xl font-medium'>[Internal] Weekly Report Marketing + Sales  </p>
+                    <p className='text-white text-lg font-medium'>[Internal] Weekly Report Marketing + Sales  </p>
                     <p className='time text-xs text-white mt-1 opacity-70'>June 12th, 2022 | 11:00 AM </p>
                 </div>
             </div>
@@ -64,12 +64,12 @@ const TopBar = () => {
                         <p className='text-blue text-lg font-medium'>+9</p>
                     </div>
                 </div>
-                <button className='flex items-center gap-1 bg-blueish px-6 py-3 rounded-full'>
+                <button className='flex items-center gap-1 bg-blueish px-6 py-3 rounded-full scale-95'>
                     {ClipIcon}
                     {LineIcon}
                     <p className='text-blue'>cem-jnmt-hsu</p>
                 </button>
-                <div className="flex p-3 pr-4 ml-4 w-[22rem] items-center rounded-full bg-blackish relative">
+                <div className="flex p-3 pr-4 ml-4 w-[22rem] items-center rounded-full bg-blackish relative scale-95">
                     <div className="flex items-center gap-4">
                         <div className="img border-[4px] border-black w-[50px] h-[50px] rounded-full">
                             <img src={user.imageUrl} alt="USER PROFILE" className='w-full h-full object-cover rounded-full' />

@@ -13,7 +13,8 @@ module.exports = {
       'red': '#FF4949',
       'blueish':'#1E2757',
       'black': '#161929',
-      'blackish': '#242737'
+      'blackish': '#242737',
+      'dark': '#1F2335'
     },
     extend: {},
   },
