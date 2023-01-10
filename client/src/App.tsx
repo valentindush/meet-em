@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import {useRef, useState} from 'react'
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs , doc, setDoc} from 'firebase/firestore/lite';
+import Main from "./pages/main";
 const firebaseConfig = {
   apiKey: "AIzaSyDi9NYR6V6HPq-aiDl-s8uIaj_pu24VFUA",
   authDomain: "meet--em.firebaseapp.com",
@@ -35,10 +36,11 @@ const peerConnection = new RTCPeerConnection(servers)
 function App() {
 
   return (
-    <div className="App">
-        
-    
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main/>} />
+      </Routes>
+    </Router>
   )
 }
 
