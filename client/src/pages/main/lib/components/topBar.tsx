@@ -33,7 +33,7 @@ const TopBar = () => {
 
 
     return (
-        <div className='bg-black flex items-center gap-3 justify-between p-4 px-8'>
+        <div className=' h-[100px] bg-black  flex items-center gap-3 justify-between p-4 px-8'>
             <div className="flex items-center gap-12">
                 <div className="logo ">
                     {/* Logo */}
@@ -69,7 +69,7 @@ const TopBar = () => {
                     {LineIcon}
                     <p className='text-blue'>cem-jnmt-hsu</p>
                 </button>
-                <div className="flex p-3 pr-4 ml-4 w-[22rem] items-center rounded-full bg-blackish relative scale-95">
+                <div className="flex p-3 pr-4 ml-4 w-[19rem] items-center rounded-full bg-blackish relative scale-95">
                     <div className="flex items-center gap-4">
                         <div className="img border-[4px] border-black w-[50px] h-[50px] rounded-full">
                             <img src={user.imageUrl} alt="USER PROFILE" className='w-full h-full object-cover rounded-full' />
