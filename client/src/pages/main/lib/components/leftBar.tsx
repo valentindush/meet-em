@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { participants } from '../data/data'
 import Participant from './participant'
 import image2 from '../../../../assets/images/img2.png'
 
 const LeftBar = () => {
+
+
+    const [chats, setChats] = useState("group")
 
 
     const PersonIcon = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +26,7 @@ const LeftBar = () => {
     <div className="h-full bg-black w-[500px]">
         <header className='flex justify-between p-4 items-center'>
             <div className="">
-                <p className='text-md text-white'>Participants</p>
+                <h2 className='text-md text-white'>Participants</h2>
             </div>
             <div className="flex items-center gap-3">
                 <button className='bg-blueish text-blue flex items-center gap-4 py-3 px-5 rounded-full'>
@@ -35,13 +38,30 @@ const LeftBar = () => {
                 </div>
             </div>
         </header>
-        <div className="participants bg-blackish p-2 h-[13rem] overflow-y-auto">
+        <div className="participants bg-blackish p-2 h-[10rem] overflow-y-auto">
             {
                 participants.map((part, idx)=>{
                     return <Participant name={part.name} imageUrl = {image2} video={part.video} audio={part.audio} />
                 })
             }
         </div>  
+
+            {/* CHATS DIV ===> */}
+
+        <header className='flex justify-between p-4 items-center'>
+            <div className="">
+                <h2 className='text-md text-white'>Chats</h2>
+            </div>
+            <div className="flex bg-blueish p-1 rounded-full">
+                <button onClick={()=>setChats("group")} className={`bg-${chats === 'group'?"blue":"blueish"} p-2 w-[6rem] rounded-full text-white`}>Group</button>
+                <button onClick={()=>setChats("personal")} className={`bg-${chats === 'personal'?"blue":"blueish"} p-2 w-[6rem] rounded-full text-white`}>Personal</button>
+            </div>
+        </header>
+
+        <div className="bg-blackish p-2 h-[13rem] overflow-y-auto">
+
+        </div>
+
     </div>
   )
 }
