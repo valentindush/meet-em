@@ -14,7 +14,9 @@ module.exports = {
       'blueish':'#1E2757',
       'black': '#161929',
       'blackish': '#242737',
-      'dark': '#1F2335'
+      'dark': '#1F2335',
+      'dark1': '#171718'
+      
     },
     extend: {},
   },

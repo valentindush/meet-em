@@ -1,5 +1,7 @@
 import React from 'react'
 import dummyImage from '../../../../assets/images/img2.png'
+import { participants } from '../data/data'
+import Participant2 from './participant2'
 
 
 const Videos = () => {
@@ -27,9 +29,9 @@ const Videos = () => {
 
 
   return (
-    <div className='w-full p-5'>
+    <div className='w-[calc(100%-500px)] p-5'>
       <div className="active_vid rounded-lg h-[55%] relative">
-        <img src={dummyImage} alt="SGSJFG" className='h-full w-full rounded-lg object-cover' />
+        <img src={dummyImage} alt="SGSJFG" className='h-full w-full rounded-2xl object-cover' />
         <div className="w-full h-full flex justify-between p-4  absolute top-0">
           <div className="flex flex-col justify-between">
             <div className="flex items-center gap-3 rounded-full bg-blackish bg-opacity-50 p-2">
@@ -50,6 +52,11 @@ const Videos = () => {
            
           </div>
         </div>
+      </div>
+      <div className="participants flex w-full overflow-auto pt-4 gap-5 pb-3">
+        {participants.map((part,idx)=>{
+          return <Participant2 key={idx} name={part.name} email={part.email} imageUrl={part.imageUrl} audio={part.audio} video={part.video} />
+        })}
       </div>
     </div>
   )
