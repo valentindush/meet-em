@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import { participants } from '../data/data'
+import { messages, participants } from '../data/data'
 import Participant from './participant'
 import image2 from '../../../../assets/images/img2.png'
+import Message from './message'
+
+import paperClipIcon from '../../../../assets/icons/paper_clip.svg'
+import sendMsgIcon from '../../../../assets/icons/send.svg'
 
 const LeftBar = () => {
+
+    
 
 
     const [chats, setChats] = useState("group")
@@ -23,7 +29,7 @@ const LeftBar = () => {
     
 
   return (
-    <div className="h-full bg-black w-[500px]">
+    <div className="h-full bg-black w-[500px] relative">
         <header className='flex justify-between p-4 items-center'>
             <div className="">
                 <h2 className='text-md text-white'>Participants</h2>
@@ -53,15 +59,29 @@ const LeftBar = () => {
                 <h2 className='text-md text-white'>Chats</h2>
             </div>
             <div className="flex bg-blueish p-1 rounded-full">
-                <button onClick={()=>setChats("group")} className={`bg-${chats === 'group'?"blue":"blueish"} p-2 w-[6rem] rounded-full text-white`}>Group</button>
-                <button onClick={()=>setChats("personal")} className={`bg-${chats === 'personal'?"blue":"blueish"} p-2 w-[6rem] rounded-full text-white`}>Personal</button>
+                <button onClick={()=>setChats("group")} className={`bg-blue p-2 w-[6rem] rounded-full text-white`}>Group</button>
+                <button onClick={()=>setChats("personal")} className={`bg-blueish p-2 w-[6rem] rounded-full text-white`}>Personal</button>
             </div>
         </header>
 
-        <div className="bg-blackish p-2 h-[13rem] overflow-y-auto">
-
+        <div className="bg-blackish p-2 h-[20rem] overflow-y-auto">
+            {messages.map((msg, idx)=>{
+                return <Message name={msg.name} imageUrl={msg.imageUrl} message={msg.message} time={msg.time} />
+            })}
         </div>
 
+
+            {/* Messaage BBOOOxxx */}
+        
+        <div className="absolute w-full bottom-12">
+            <div className="flex items-center bg-blackish p-3 py-1 pr-2 rounded-full w-[95%] mx-auto relative justify-between">
+                <img src={paperClipIcon}  alt="" className='ml-4'/>
+                <input type="text" placeholder='Type Something' className='p-3 bg-transparent placeholder:text-lg text-white text-md outline-none' />
+                <button  className='bg-blue p-2 rounded-full flex items-center justify-center'>
+                    <img src={sendMsgIcon} alt="" />
+                </button>
+            </div>
+        </div>
     </div>
   )
 }

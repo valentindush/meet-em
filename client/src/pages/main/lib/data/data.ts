@@ -60,3 +60,49 @@ export const participants: Participant[] = [
         imageUrl: image2
     }
 ]
+
+export type MessageType  = {
+    name: string,
+    imageUrl: string,
+    message: string,
+    time: Date
+}
+
+export const messages: MessageType[]  = [
+    {
+        name: "Ish Kevin",
+        imageUrl: image2,
+        message: "Hello guys, what's good ?",
+        time: new Date(Date.now())
+    },
+    {
+        name: "Trizzie ninety six",
+        imageUrl: image2,
+        message: "Ni poa poa BRO",
+        time: new Date(Date.now())
+    },
+    {
+        name: "What is this meeting up !",
+        imageUrl: image2,
+        message: "Ni poa poa BRO",
+        time: new Date(Date.now())
+    },
+    {
+        name: "Ish Kevin",
+        imageUrl: image2,
+        message: "Hello guys, what's good ?",
+        time: new Date(Date.now())
+    },
+    {
+        name: "Trizzie ninety six",
+        imageUrl: image2,
+        message: "Ni poa poa BRO",
+        time: new Date(Date.now())
+    },
+    {
+        name: "What is this meeting up !",
+        imageUrl: image2,
+        message: "Ni poa poa BRO",
+        time: new Date(Date.now())
+    }
+]
