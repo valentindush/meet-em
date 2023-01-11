@@ -9,9 +9,6 @@ import sendMsgIcon from '../../../../assets/icons/send.svg'
 
 const LeftBar = () => {
 
-    
-
-
     const [chats, setChats] = useState("group")
 
 
