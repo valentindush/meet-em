@@ -3,6 +3,7 @@ import {useRef, useState} from 'react'
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs , doc, setDoc} from 'firebase/firestore/lite';
 import Main from "./pages/main";
+import Home from "./pages/home";
 const firebaseConfig = {
   apiKey: "AIzaSyDi9NYR6V6HPq-aiDl-s8uIaj_pu24VFUA",
   authDomain: "meet--em.firebaseapp.com",
@@ -38,7 +39,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main/>} />
+        <Route path="/meet/:id" element={<Main/>} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   )
