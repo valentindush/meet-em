@@ -64,10 +64,13 @@ const Videos = () => {
   const moreIcon = <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.0003 0.666687C8.71699 0.666687 7.66699 1.71669 7.66699 3.00002C7.66699 4.28335 8.71699 5.33335 10.0003 5.33335C11.2837 5.33335 12.3337 4.28335 12.3337 3.00002C12.3337 1.71669 11.2837 0.666687 10.0003 0.666687ZM17.0003 0.666687C15.717 0.666687 14.667 1.71669 14.667 3.00002C14.667 4.28335 15.717 5.33335 17.0003 5.33335C18.2837 5.33335 19.3337 4.28335 19.3337 3.00002C19.3337 1.71669 18.2837 0.666687 17.0003 0.666687ZM3.00033 0.666687C1.71699 0.666687 0.666992 1.71669 0.666992 3.00002C0.666992 4.28335 1.71699 5.33335 3.00033 5.33335C4.28366 5.33335 5.33366 4.28335 5.33366 3.00002C5.33366 1.71669 4.28366 0.666687 3.00033 0.666687Z" fill="#1A71FF"/>
                     </svg>
+
+
+
   
 
   return (
-    <div className='w-[calc(100%-500px)] p-5'>
+    <div className='w-[calc(100%-500px)] p-5 relative'>
       <div className="active_vid rounded-lg h-[55%] relative">
         <img src={dummyImage} alt="SGSJFG" className='h-full w-full rounded-2xl object-cover' />
         <div className="w-full h-full flex justify-between p-4  absolute top-0">
@@ -97,7 +100,7 @@ const Videos = () => {
         })}
       </div>
 
-      <div className="buttons flex items-center gap-3">
+      <div className="buttons flex items-center gap-5   bg-black w-full bottom-0 p-6 justify-center absolute">
         <button className='w-[60px] h-[60px] flex items-center justify-center bg-blue rounded-full'>
           {MicIcon}
         </button>
@@ -108,8 +111,12 @@ const Videos = () => {
           {presentIcon}
         </button>
 
-        <button className='w-[60px] h-[60px] flex items-center justify-center bg-red rounded-full'>
-          {recorderIcon}
+        <button className='border-4 border-blackish rounded-full p-1'>
+          <div className='w-[60px] h-[60px] flex items-center justify-center bg-red rounded-full border-2 border-black'>
+            <div className="rounded-full border border-white border-opacity-60 p-[2px]">
+              {recorderIcon}
+            </div>
+          </div>
         </button>
 
         <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
@@ -117,6 +124,10 @@ const Videos = () => {
         </button>        
         <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
           {moreIcon}
+        </button>
+
+        <button className='bg-red text-white py-4 px-8 rounded-full absolute right-12'>
+          End Call
         </button>
       </div>
     </div>
