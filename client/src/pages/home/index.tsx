@@ -1,40 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TopBar from './lib/components/topBar'
 import { camIcon, keyBoardIcon } from './lib/components/icons'
+import image1 from '../../assets/images/1.png'
+import image2 from '../../assets/images/2.png'
+import image3 from '../../assets/images/3.png'
 
 const Home = () => {
+
+  const  [isTyping, setIsTyping] = useState(false)
+  const [code,setCode] = useState("")
+
   return (
-    <section className='text-white px-8 py-4'>
+    <section className='text-white h-fit px-24 py-12 md:flex-wrap md:p-4'>
         <TopBar />
 
-        <div className="mt-24">
-          <div className="text-4xl font-semibold">
-            <h2>Premium video meetings.</h2>
-            <h2 className='mt-3'>Now free for everyone.</h2>
-          </div>
-          <div className="mt-12 max-w-3xl">
-            <p className='text-white text-xl font-medium'>
-              A video meeting app that allows you to connect with colleagues, clients, and friends from anywhere, on any device. Features include screen sharing, recording, and virtual backgrounds for a seamless and productive remote meeting experience.
-            </p>
-            <p className='text-white text-sm opacity-80 mt-5'>
-              With our app, you can easily schedule and join meetings, share documents and collaborate in real-time, all while being able to see and hear each other clearly. Additionally, our app also offers advanced security measures to ensure the privacy of your meetings, making it the ideal choice for businesses and individuals alike.
-            </p>
-          </div>
-
-          {/* New meeting */}
-
-
-          <div className="mt-12 flex items-center gap-4">
-            <button className='p-4 px-6 bg-blue text-white rounded-full flex items-center justify-center gap-3'>
-              {camIcon}
-              <p className='text-lg font-medium'>New meeting</p>
-            </button>
-            <div className="flex items-center gap-2 border border-white p-2 rounded-full px-6">
-              {keyBoardIcon}
-              <input type="text" placeholder='Enter a code or a link' className='outline-none h-full p-2 bg-transparent' />
+        <div className="mt-[10rem] md:mt-12 h-fit flex lg:flex-wrap justify-between">
+          <div className="z-10 w-1/2 md:w-full">
+            <div className="text-4xl min-w-[500px] md:min-w-full font-semibold md:text-center">
+              <h2>Premium video meetings.</h2>
+              <h2 className='mt-3'>Now free for everyone.</h2>
             </div>
+            <div className="mt-12  z-10 min-w-[500px] md:min-w-full">
+              <p className='text-[#d9d7d7e4] text-xl md:text-center'>
+                A video meeting app that allows you to connect with colleagues, clients, and friends from anywhere, on any device. Features include screen sharing, recording, and virtual backgrounds for a seamless and productive remote meeting experience.
+              </p>
+            </div>
+
+            {/* New meeting */}
+
+
+            <div className="mt-12 flex items-center  gap-4 z-10 md:gap-2 md:justify-center flex-wrap">
+              <button className='p-4 px-6 bg-blue text-white rounded-full flex items-center justify-center gap-3 min-w-[200px]'>
+                {camIcon}
+                <p className='text-lg font-medium'>New meeting</p>
+              </button>
+              <div className={`flex items-center gap-2 border ${isTyping?"border-blue": "border-white"} border-opacity-75 p-3 rounded-full px-6`}>
+                {keyBoardIcon}
+                <input value={code} onChange={(e)=>setCode(e.target.value)} onFocus={()=>setIsTyping(true)} onBlur={()=>setIsTyping(false)} type="text" placeholder='Enter a code or a link' className='outline-none h-full p-2 bg-transparent' />
+              </div>
+
+              <button className={`text-lg ml-5 ${code !== ""? "text-blue": ""}`} disabled={code === ""?true:false}>Join</button>
+        
+            </div>
+
+          </div>
+          <div className="flex">
+            <img src={image1} alt="" className='object-cover' />
           </div>
         </div>
+        <hr className='mt-12 opacity-40' />
     </section>
   )
 }
