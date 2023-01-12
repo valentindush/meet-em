@@ -70,7 +70,7 @@ const Videos = () => {
   
 
   return (
-    <div className='w-[calc(100%-500px)] p-5 relative'>
+    <div className='w-[calc(100%-500px)] lg:w-full p-5 relative'>
       <div className="active_vid rounded-lg h-[55%] relative">
         <img src={dummyImage} alt="SGSJFG" className='h-full w-full rounded-2xl object-cover' />
         <div className="w-full h-full flex justify-between p-4  absolute top-0">
@@ -100,33 +100,35 @@ const Videos = () => {
         })}
       </div>
 
-      <div className="buttons flex items-center gap-5   bg-black w-full bottom-0 p-6 justify-center absolute">
-        <button className='w-[60px] h-[60px] flex items-center justify-center bg-blue rounded-full'>
-          {MicIcon}
-        </button>
-        <button className='w-[60px] h-[60px] flex items-center justify-center bg-blue rounded-full'>
-          {CamIcon}
-        </button>
-        <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
-          {presentIcon}
-        </button>
+      <div className="buttons flex items-center  bg-black w-full bottom-0 p-6 justify-center absolute lg:gap-4">
+        <div className="flex items-center gap-5 lg:gap-2">
+          <button className='w-[60px] h-[60px] flex items-center justify-center bg-blue rounded-full'>
+            {MicIcon}
+          </button>
+          <button className='w-[60px] h-[60px] flex items-center justify-center bg-blue rounded-full'>
+            {CamIcon}
+          </button>
+          <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
+            {presentIcon}
+          </button>
 
-        <button className='border-4 border-blackish rounded-full p-1'>
-          <div className='w-[60px] h-[60px] flex items-center justify-center bg-red rounded-full border-2 border-black'>
-            <div className="rounded-full border border-white border-opacity-60 p-[2px]">
-              {recorderIcon}
+          <button className='border-4 border-blackish rounded-full p-1'>
+            <div className='w-[60px] h-[60px] flex items-center justify-center bg-red rounded-full border-2 border-black'>
+              <div className="rounded-full border border-white border-opacity-60 p-[2px]">
+                {recorderIcon}
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
 
-        <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
-          {messageIcon}
-        </button>        
-        <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
-          {moreIcon}
-        </button>
+          <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
+            {messageIcon}
+          </button>        
+          <button className='w-[60px] h-[60px] flex items-center justify-center bg-blueish rounded-full'>
+            {moreIcon}
+          </button>
 
-        <button className='bg-red text-white py-4 px-8 rounded-full absolute right-12'>
+        </div>
+        <button className='bg-red text-white py-4 px-8 rounded-full absolute right-12 lg:right-0 lg:relative'>
           End Call
         </button>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { messages, participants } from '../data/data'
 import Participant from './participant'
 import image2 from '../../../../assets/images/img2.png'
@@ -23,63 +23,93 @@ const LeftBar = () => {
                     <path d="M1 7L7 1L13 7" stroke="#1A71FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
     
-    
 
+    const menuIcon = <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.94922 12.1004H21.9492" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.94922 6.10043H21.9492" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.94922 18.1004H21.9492" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+    
+    const closeIcon = <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.0847 6.37964L6.08472 18.3796" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.08472 6.37964L18.0847 18.3796" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+    
+    
+const [active, setActive] = useState(false)
+const [width, setWidth] = useState(window.innerWidth)
+
+window.addEventListener('resize',(e)=>{
+    setWidth(window.innerWidth)
+})
+
+useEffect(()=>{
+    if(width > 1023){
+        setActive(false)
+    }
+},[width])
+    
   return (
-    <div className="h-full bg-black w-[500px] relative">
-        <header className='flex justify-between p-4 items-center'>
-            <div className="">
-                <h2 className='text-md text-white'>Participants</h2>
+    <>
+        <div onClick={()=>setActive(!active)} className='text-white absolute right-3 top-16 bg-blueish p-4 rounded-full z-[100] hidden lg:block'>
+            {active?menuIcon:closeIcon}
+        </div>
+
+        {!active&&<div className="h-[90%] bg-black w-[500px] relative lg:w-full lg:absolute lg:overflow-x-hidden z-20">
+            <header className='flex justify-between p-4 items-center'>
+                <div className="">
+                    <h2 className='text-md text-white'>Participants</h2>
+                </div>
+                <div className="flex items-center gap-3">
+                    <button className='bg-blueish text-blue flex items-center gap-4 py-3 px-5 rounded-full'>
+                        <p className='text-sm'>Add Participant</p>
+                        {PersonIcon}
+                    </button>
+                    <div className="cursor-pointer">
+                        {ArrowUp}
+                    </div>
+                </div>
+            </header>
+            <div className="participants bg-blackish p-2 h-[10rem] lg:h-[15rem] overflow-y-auto">
+                {
+                    participants.map((part, idx)=>{
+                        return <Participant name={part.name} imageUrl = {image2} video={part.video} audio={part.audio} />
+                    })
+                }
+            </div>  
+
+                {/* CHATS DIV ===> */}
+
+            <header className='flex justify-between p-4 items-center'>
+                <div className="">
+                    <h2 className='text-md text-white'>Chats</h2>
+                </div>
+                <div className="flex bg-blueish p-1 rounded-full">
+                    <button onClick={()=>setChats("group")} className={`bg-blue p-2 w-[6rem] rounded-full text-white`}>Group</button>
+                    <button onClick={()=>setChats("personal")} className={`bg-blueish p-2 w-[6rem] rounded-full text-white`}>Personal</button>
+                </div>
+            </header>
+
+            <div className="bg-blackish p-2 h-[20rem] overflow-y-auto">
+                {messages.map((msg, idx)=>{
+                    return <Message name={msg.name} imageUrl={msg.imageUrl} message={msg.message} time={msg.time} />
+                })}
             </div>
-            <div className="flex items-center gap-3">
-                <button className='bg-blueish text-blue flex items-center gap-4 py-3 px-5 rounded-full'>
-                    <p className='text-sm'>Add Participant</p>
-                    {PersonIcon}
-                </button>
-                <div className="cursor-pointer">
-                    {ArrowUp}
+
+
+                {/* Messaage BBOOOxxx */}
+            
+            <div className="absolute w-full -bottom-12 lg:bottom-12">
+                <div className="flex items-center bg-blackish p-3 py-1 pr-2 rounded-full w-[95%] mx-auto relative justify-between">
+                    <img src={paperClipIcon}  alt="" className='ml-4'/>
+                    <input type="text" placeholder='Type Something' className='p-3 bg-transparent placeholder:text-lg text-white text-md outline-none' />
+                    <button  className='bg-blue p-2 rounded-full flex items-center justify-center'>
+                        <img src={sendMsgIcon} alt="" />
+                    </button>
                 </div>
             </div>
-        </header>
-        <div className="participants bg-blackish p-2 h-[10rem] overflow-y-auto">
-            {
-                participants.map((part, idx)=>{
-                    return <Participant name={part.name} imageUrl = {image2} video={part.video} audio={part.audio} />
-                })
-            }
-        </div>  
-
-            {/* CHATS DIV ===> */}
-
-        <header className='flex justify-between p-4 items-center'>
-            <div className="">
-                <h2 className='text-md text-white'>Chats</h2>
-            </div>
-            <div className="flex bg-blueish p-1 rounded-full">
-                <button onClick={()=>setChats("group")} className={`bg-blue p-2 w-[6rem] rounded-full text-white`}>Group</button>
-                <button onClick={()=>setChats("personal")} className={`bg-blueish p-2 w-[6rem] rounded-full text-white`}>Personal</button>
-            </div>
-        </header>
-
-        <div className="bg-blackish p-2 h-[20rem] overflow-y-auto">
-            {messages.map((msg, idx)=>{
-                return <Message name={msg.name} imageUrl={msg.imageUrl} message={msg.message} time={msg.time} />
-            })}
-        </div>
-
-
-            {/* Messaage BBOOOxxx */}
-        
-        <div className="absolute w-full bottom-12">
-            <div className="flex items-center bg-blackish p-3 py-1 pr-2 rounded-full w-[95%] mx-auto relative justify-between">
-                <img src={paperClipIcon}  alt="" className='ml-4'/>
-                <input type="text" placeholder='Type Something' className='p-3 bg-transparent placeholder:text-lg text-white text-md outline-none' />
-                <button  className='bg-blue p-2 rounded-full flex items-center justify-center'>
-                    <img src={sendMsgIcon} alt="" />
-                </button>
-            </div>
-        </div>
-    </div>
+        </div>}
+    </>
   )
 }
 

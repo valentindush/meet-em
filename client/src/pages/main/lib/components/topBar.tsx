@@ -33,7 +33,7 @@ const TopBar = () => {
 
 
     return (
-        <div className=' h-[100px] bg-black  flex items-center gap-3 justify-between p-4 px-8'>
+        <div className=' h-[100px] bg-black  flex items-center gap-3 md:gap-1 justify-between p-4 px-8 md:px-2 md:py-2'>
             <div className="flex items-center gap-12">
                 <div className="logo ">
                     {/* Logo */}
@@ -46,8 +46,8 @@ const TopBar = () => {
                     <p className='time text-xs text-white mt-1 opacity-70'>June 12th, 2022 | 11:00 AM </p>
                 </div>
             </div>
-            <div className="flex items-center gap-5">
-                <div className="flex">
+            <div className="flex items-center gap-5 lg:gap-1">
+                <div className="flex md:hidden">
                     <div className="w-[50px] h-[50px] rounded-full border-[3px] border-black relative">
                         <img src={participants[0].imageUrl} alt="participant" className='w-full h-full rounded-full object-cover' />
                     </div>
@@ -64,7 +64,7 @@ const TopBar = () => {
                         <p className='text-blue text-lg font-medium'>+9</p>
                     </div>
                 </div>
-                <button className='flex items-center gap-1 bg-blueish px-6 py-3 rounded-full scale-95'>
+                <button className='flex items-center gap-1 bg-blueish px-6 py-3 rounded-full scale-95 lg:hidden'>
                     {ClipIcon}
                     {LineIcon}
                     <p className='text-blue'>cem-jnmt-hsu</p>
