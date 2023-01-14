@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../../../../assets/icons/logo.svg'
 import logosm from '../../../../assets/icons/logo_sm.svg'
 import { helpIcon, settingsIcon } from './icons'
@@ -27,7 +28,7 @@ const TopBar = () => {
                 <button className='scale-[1.3] p-2 rounded-lg hover:bg-blueish hover:bg-opacity-40'>{helpIcon}</button>
                 <button className='scale-[1.3] p-2 rounded-lg hover:bg-blueish hover:bg-opacity-40'>{settingsIcon}</button>
             </div>
-            <div className="bg-blue p-3 rounded-full px-5">Sign up</div>
+            <Link to={"/auth/signup"} className="bg-blue p-3 rounded-full px-5">Sign up</Link>
         </div>
         
     </div>
