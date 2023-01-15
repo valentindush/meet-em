@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import img1 from '../../../assets/images/2.png'
 import { Link } from 'react-router-dom'
+import { allEmpty, isEmail, isFname, isPassword, validateValues } from '../../../utils/validation'
+
+import { ToastContainer, toast } from 'react-toastify';
+import { toastOptions } from '../../../utils/toastOptions';
+import { useAuth } from '../../../hooks/auth';
+
 
 const Signup = () => {
 
@@ -8,6 +14,46 @@ const Signup = () => {
 
   const [error, setError] = useState("")
 
+  const [fname, setFname] = useState("")
+  const [lname, setLname] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const {signup} = useAuth()
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setError("")
+
+    if(allEmpty({fname, lname, email, password})){
+      setError("Please fill all the fields")
+      return
+    }
+    
+    if(!isEmail(email)){
+      setError("Please enter a valid email")
+      return
+    }
+
+    if(!isFname(fname)){
+      setError("Please enter a valid first name")
+      return
+    }
+
+    if(!isFname(lname)){
+      setError("Please enter a valid last name")
+      return
+    }
+
+    if(!isPassword(password)){
+      setError("Please enter a valid password")
+      return
+    }
+
+    //Create user
+    const rs = await signup({fname, lname}, email, password)
+    
+  }
 
   return (
     <section className='h-screen w-screen flex items-center justify-center'>
@@ -20,18 +66,18 @@ const Signup = () => {
 
           {/* FORM */}
 
-          <form action="#" className='mt-8 px-4'>
+          <form action="#" className='mt-8 px-4' onSubmit={handleSubmit}>
             <div className="field mt-5">
-              <input type="text" id='fname' placeholder='First name' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
+              <input value={fname} onChange={(e)=>setFname(e.target.value)} type="text" id='fname' placeholder='First name' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
             </div>
             <div className="field mt-5">
-              <input type="text" id='lname' placeholder='Last name' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
+              <input value={lname} onChange={(e)=>setLname(e.target.value)} type="text" id='lname' placeholder='Last name' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
             </div>
             <div className="field mt-5">
-              <input type="email" id='email' placeholder='Email' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
+              <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" id='email' placeholder='Email' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
             </div>
             <div className="field mt-5">
-              <input type="password" id='password' placeholder='Password' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
+              <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" id='password' placeholder='Password' className='block w-full bg-transparent border-b border-white outline-none text-white mt-2 px-2 py-2 focus:border-blue border-opacity-80 placeholder:opacity-90' />
             </div>
             <div className="field mt-12">
               <button type='submit' className='w-full p-2 bg-blue text-white font-medium rounded-xl'>Sign up</button>
